@@ -444,7 +444,7 @@ html, body {
   <div class="corner-info hud-panel">
     <p class="ci-title">FLASHDREAM RP</p>
     <p class="ci-sub">Konoha vs Kiri</p>
-    <div class="ci-row"><span>Joueurs</span><b>128 / 256</b></div>
+    <div class="ci-row"><span>Joueurs</span><b id="playerSlots">-- / --</b></div>
     <div class="ci-row"><span>Latence</span><b>32 ms</b></div>
     <div class="ci-row"><span class="ci-status">Serveur en ligne</span></div>
   </div>
@@ -505,6 +505,14 @@ html, body {
   </div>
 </div>
 
+<script>
+  // Appelée nativement par GMod (garrysmod/lua/menu/loading.lua) avec les vraies infos serveur.
+  // maxplayers_visible correspond au nombre réel de slots configurés côté serveur.
+  window.GameDetails = function (servername, serverurl, mapname, maxplayers_visible) {
+    var el = document.getElementById('playerSlots');
+    if (el) el.textContent = maxplayers_visible;
+  };
+</script>
 <script>
 (function () {
   var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
