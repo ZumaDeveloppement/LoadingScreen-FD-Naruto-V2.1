@@ -510,7 +510,7 @@ html, body {
   // maxplayers_visible correspond au nombre réel de slots configurés côté serveur.
   window.GameDetails = function (servername, serverurl, mapname, maxplayers_visible) {
     var el = document.getElementById('playerSlots');
-    if (el) el.textContent = maxplayers_visible;
+    if (el) el.textContent = 'Slots ' + maxplayers_visible;
   };
 </script>
 <script>
